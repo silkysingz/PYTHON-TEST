@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_110518da5ccba1f14862afae2b21ec74 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; top: 10px; right: 10px; z-index: 1000; background-color: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
+    <select id="layer-select">
+        <option value="" disabled selected>Select Layer</option>
+        <option value="mastersthesis_2023:gba_lcr_1983_1993">Land Cover 1983-1993</option>
+        <option value="mastersthesis_2023:gba_lcr_1993_2003">Land Cover 1993-2003</option>
+        <option value="mastersthesis_2023:gba_lcr_2003_2013">Land Cover 2003-2013</option>
+        <option value="mastersthesis_2023:gba_lcr_2013_2023">Land Cover 2013-2023</option>
+        <option value="GMBLULC:gmb_lulc_2017_2018">Land Cover 2017-2018</option>
+    </select>
+</div>
+<script>
+    document.getElementById('layer-select').addEventListener('change', function() {
+        var selectedLayer = this.value;
+        var layers = document.querySelectorAll('.leaflet-control-layers-overlays input');
+        layers.forEach(function(layer) {
+            if (layer.value === selectedLayer) {
+                layer.checked = true;
+            } else {
+                layer.checked = false;
+            }
+        });
+    });
+</script>
+    
+<div style="position: fixed; bottom: 10px; right: 10px; z-index: 1000; background-color: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
+    <h3>Legend</h3>
+    <p><strong>Land Cover 1983-1993</strong>: <span style="background-color: #ff0000; padding: 2px 8px; border-radius: 3px; color: white;">Legend content for this layer</span></p>
+    <p><strong>Land Cover 1993-2003</strong>: <span style="background-color: #00ff00; padding: 2px 8px; border-radius: 3px; color: white;">Legend content for this layer</span></p>
+    <p><strong>Land Cover 2003-2013</strong>: <span style="background-color: #0000ff; padding: 2px 8px; border-radius: 3px; color: white;">Legend content for this layer</span></p>
+    <p><strong>Land Cover 2013-2023</strong>: <span style="background-color: #ffff00; padding: 2px 8px; border-radius: 3px; color: white;">Legend content for this layer</span></p>
+    <p><strong>Land Cover 2017-2018</strong>: <span style="background-color: #ff00ff; padding: 2px 8px; border-radius: 3px; color: white;">Legend content for this layer</span></p>
+</div>
+    
+            <div class="folium-map" id="map_110518da5ccba1f14862afae2b21ec74" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_110518da5ccba1f14862afae2b21ec74 = L.map(
+                "map_110518da5ccba1f14862afae2b21ec74",
+                {
+                    center: [13.332465, -16.701183],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12.0,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_924c16286f4e08343a86d4cbd7e5878e = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_924c16286f4e08343a86d4cbd7e5878e.addTo(map_110518da5ccba1f14862afae2b21ec74);
+        
+    
+            var tile_layer_5e423f55381aac6126ffc731afbbf176 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_5e423f55381aac6126ffc731afbbf176.addTo(map_110518da5ccba1f14862afae2b21ec74);
+        
+    
+            var tile_layer_b0481c52a074e6e88f9116d1b97dcd17 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_b0481c52a074e6e88f9116d1b97dcd17.addTo(map_110518da5ccba1f14862afae2b21ec74);
+        
+    
+            var tile_layer_34e9895909155d0268eb5323e6de05f1 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_34e9895909155d0268eb5323e6de05f1.addTo(map_110518da5ccba1f14862afae2b21ec74);
+        
+    
+            var macro_element_7c09fbb306f7eaef91a13dab6fe1dd64 = L.tileLayer.wms(
+                "http://localhost:8085/geoserver/mastersthesis_2023/wms",
+                {"attribution": "", "format": "image/png", "layers": "mastersthesis_2023:gba_lcr_1983_1993", "styles": "", "transparent": true, "version": "1.1.1"}
+            );
+        
+    
+            macro_element_7c09fbb306f7eaef91a13dab6fe1dd64.addTo(map_110518da5ccba1f14862afae2b21ec74);
+        
+    
+            var macro_element_917a04005a43d38db3038b39c3a352b5 = L.tileLayer.wms(
+                "http://localhost:8085/geoserver/mastersthesis_2023/wms",
+                {"attribution": "", "format": "image/png", "layers": "mastersthesis_2023:gba_lcr_1993_2003", "styles": "", "transparent": true, "version": "1.1.1"}
+            );
+        
+    
+            macro_element_917a04005a43d38db3038b39c3a352b5.addTo(map_110518da5ccba1f14862afae2b21ec74);
+        
+    
+            var macro_element_c9963a86990dc6999f3403902d8a8a76 = L.tileLayer.wms(
+                "http://localhost:8085/geoserver/mastersthesis_2023/wms",
+                {"attribution": "", "format": "image/png", "layers": "mastersthesis_2023:gba_lcr_2003_2013", "styles": "", "transparent": true, "version": "1.1.1"}
+            );
+        
+    
+            macro_element_c9963a86990dc6999f3403902d8a8a76.addTo(map_110518da5ccba1f14862afae2b21ec74);
+        
+    
+            var macro_element_8c6d08e8a65e5d16abf2a28d8b32b839 = L.tileLayer.wms(
+                "http://localhost:8085/geoserver/mastersthesis_2023/wms",
+                {"attribution": "", "format": "image/png", "layers": "mastersthesis_2023:gba_lcr_2013_2023", "styles": "", "transparent": true, "version": "1.1.1"}
+            );
+        
+    
+            macro_element_8c6d08e8a65e5d16abf2a28d8b32b839.addTo(map_110518da5ccba1f14862afae2b21ec74);
+        
+    
+            var macro_element_0df736ad82c85e31c53c3878781fd57b = L.tileLayer.wms(
+                "http://localhost:8085/geoserver/mastersthesis_2023/wms",
+                {"attribution": "", "format": "image/png", "layers": "GMBLULC:gmb_lulc_2017_2018", "styles": "", "transparent": true, "version": "1.1.1"}
+            );
+        
+    
+            macro_element_0df736ad82c85e31c53c3878781fd57b.addTo(map_110518da5ccba1f14862afae2b21ec74);
+        
+</script>
+</html>
